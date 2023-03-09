@@ -1,0 +1,35 @@
+// Subarray with given sum
+ArrayList<Integer> num = new ArrayList<Integer>();
+        int sum=0;
+        int start = 0;
+        int end = 0;
+        for(int i=0;i<n;i++)
+        {
+             sum+=arr[i];
+             end=i;
+             
+             while(sum>s)
+             {
+                 sum-=arr[start]; 
+                 start++;
+             }
+             
+             if(s == sum)
+             {
+                 break;
+             }
+        }
+         
+         if(s!=sum || s == 0)
+         {
+             
+            num.add(-1);
+            return num;
+         }
+         
+        else
+        {
+            num.add(start+1);
+            num.add(end+1);
+            return num;
+        }
