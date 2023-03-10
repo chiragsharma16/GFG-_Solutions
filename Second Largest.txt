@@ -1,0 +1,13 @@
+//Second Largest 
+ Arrays.sort(arr);
+        int max = arr[n-1];
+        
+        for(int i=n-1;i>=0;i--)
+        {
+            if(max>arr[i])
+            {
+                return arr[i];
+                
+            }
+        }
+        return -1;
