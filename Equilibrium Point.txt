@@ -1,0 +1,22 @@
+//Equilibrium Point
+int sum = 0;
+        int left = 0;
+        int i;  
+        
+        
+        for(i =0;i<n;i++)
+        {
+            sum+=arr[i];
+        }
+        
+        for(i=0; i<n;i++)
+        {
+            sum-=arr[i];
+            if(left == sum)
+            {
+                return i+1;
+            }
+            left +=arr[i];
+        }
+         
+         return -1;
