@@ -1,0 +1,35 @@
+//Rearrange Array Alternately
+
+ArrayList<Long> list= new ArrayList<Long>();
+        int max =n-1;
+        int min = 0;
+        long mid=0;
+        
+        if(n == 1)
+        {
+            return;
+        }
+        
+        if(n%2!=0)
+        {
+            mid=arr[n/2];
+        }
+        while(max>min)
+        {
+            list.add(arr[max]);
+            list.add(arr[min]);
+            
+            max--;
+            min++;
+        }
+        if (n%2!=0)
+        {
+             mid=arr[n/2];
+             list.add(mid);
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=list.get(i);
+        }
+        
