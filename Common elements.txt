@@ -1,0 +1,36 @@
+//Common elements
+
+
+
+class Solution
+{
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        // code here 
+        HashSet <Integer> set1 = new HashSet<Integer>();
+        HashSet <Integer> set2 = new HashSet<Integer>();
+        for(int i =0;i<n1;i++)
+        {
+            set1.add(A[i]);
+        }
+         for(int i =0;i<n2;i++)
+        {
+            if(set1.contains(B[i]))
+            {
+            set2.add(B[i]);
+            }
+        }
+        
+        
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for(int i =0;i<n3;i++)
+        {
+            if(set2.contains(C[i]))
+            {
+                if(!list.contains(C[i]))
+                    list.add(C[i]);
+            }
+        }
+        return list;
+    }
+}
