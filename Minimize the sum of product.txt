@@ -1,0 +1,23 @@
+//Minimize the sum of product
+
+
+
+class Solution {
+
+    public long minValue(long a[], long b[], long n) 
+    {
+        // Your code goes here
+        long sum = 0;
+        Arrays.sort(a);
+        Arrays.sort(b);
+        int i ;
+         
+        
+        for(i=0;i<n;i++)
+        {
+            
+            sum +=   a[i] *b[(int)n-1-i];
+        }
+        return sum;
+    }
+}
