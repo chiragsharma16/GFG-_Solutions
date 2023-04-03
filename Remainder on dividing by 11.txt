@@ -1,0 +1,20 @@
+//Remainder on dividing by 11
+
+
+class Solution 
+{ 
+    static int xmod11(String x)
+	{    
+	    int n=x.length();
+	    int sum=0;
+	    for(int i=n-1;i>=0;i--){
+	        int digit=x.charAt(i)-'0';
+	        if((n-i)%2==0)
+	          sum=(sum-digit+11)%11;
+	         else
+	           sum=(sum+digit)%11;
+	    }
+	    return sum;
+        
+	}
+} 
