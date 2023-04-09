@@ -1,0 +1,24 @@
+//Minimum Steps Required
+
+
+class Solution{
+	int minSteps(String str) {
+	    int n=str.length();
+	    int ind=0;
+	    int consA=0, consB=0;
+	    int tempA=0, tempB=0;
+	    
+	    while(ind<n){
+	        while(ind<n && str.charAt(ind)=='a'){ 
+	            ind++; tempA=1; 
+	        }
+	        while(ind<n && str.charAt(ind)=='b'){ 
+	            ind++; tempB=1;
+	        }
+	        consA+=tempA;  consB+=tempB;
+	        tempA=0; tempB=0;
+	    }
+	    
+	    return Math.min(consA,consB)+1;
+}
+}
