@@ -1,0 +1,38 @@
+//Job Sequencing Problem
+
+
+
+class Solution
+{
+    //Function to find the maximum profit and the number of jobs done.
+    int[] JobScheduling(Job arr[], int n) {
+        // Your code here
+        Arrays.sort(arr, (a, b) -> a.profit == b.profit ? b.deadline-a.deadline : b.profit-a.profit);
+        
+        int maxDeadline = 0;
+        
+        for(int i=0; i<n; i++){
+            maxDeadline = Math.max(maxDeadline, arr[i].deadline);
+        }
+        
+        boolean[] hash = new boolean[maxDeadline+1];
+        int profitCount = 0, jobCount = 0;
+        
+        for(int i=0; i<n; i++){
+            Job curr = arr[i];
+            int currDL = curr.deadline;
+            
+            while(currDL > 0 && hash[currDL]){
+                currDL--;
+            }
+            
+            if(currDL > 0){
+                hash[currDL]=true;
+                profitCount+=curr.profit;
+                jobCount++;
+            }
+        }
+        
+        return new int[]{jobCount, profitCount};
+    }
+}
