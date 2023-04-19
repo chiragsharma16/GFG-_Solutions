@@ -1,0 +1,23 @@
+//Wifi Range
+
+class Solution 
+{ 
+    boolean wifiRange(int N, String S, int X) 
+    { 
+        int not = X;
+        for(int i = 0; i < N; i++){
+            if(S.charAt(i)=='0'){
+                not++;
+            }else{
+                not = 0;
+            }
+            if(not > X*2){
+                return false;
+            }
+        }
+        if(not>X){
+            return false;
+        }
+        return true;
+    }
+}
