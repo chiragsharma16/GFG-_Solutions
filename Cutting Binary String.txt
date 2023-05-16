@@ -1,0 +1,50 @@
+//Cutting Binary String
+
+class Solution{
+    public:
+    bool isValid(string str){
+   int n = str.length();
+   if(str[0] == '0') return (false);
+   
+   long long int num = 0;
+   for(int i = 0; i < n; i++){
+       if(str[i] == '1'){
+           num += (1LL<<(n-i-1));
+       }
+   }
+   
+   while(num > 1){
+       if(num % 5 != 0) return (false);
+       num /= 5;
+   }
+   
+   return (true);
+}
+
+void helper(string s,int n,int i,int j,int cnt,int len,int &ans){
+   if(i > j) return;
+   if(j-i+1 != n && isValid(s.substr(i,j-i+1))){
+       len += j-i+1;
+       if(len == n) ans = min(ans,cnt+1);
+       return;
+   }
+   if(len == n){
+       ans = min(ans,cnt+1);
+       return;
+   }
+   
+   for(int k = i; k < j; k++){
+       string str = s.substr(i,k-i+1);
+       if(isValid(str)){
+           helper(s,n,k+1,j,cnt+1,len+k-i+1,ans);
+       }
+   }
+}
+
+int cuts(string s){
+   if(isValid(s)) return (1);
+   int ans = INT_MAX;
+   helper(s,s.length(),0,s.length()-1,0,0,ans);
+   return (ans == INT_MAX ? -1 : ans);
+}
+};
