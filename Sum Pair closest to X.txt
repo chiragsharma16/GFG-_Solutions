@@ -1,0 +1,27 @@
+//Sum Pair closest to X
+
+class Solution {
+    int[] sumClosest(int[] arr, int x) {
+        // code here 
+        int low = 0, high = arr.length - 1;
+        int res[] = new int[2], minDiff = Integer.MAX_VALUE;
+        while(low < high) {
+            int sum = arr[low] + arr[high];
+            int currDiff = Math.abs(sum - x);
+            if(currDiff < minDiff)
+            {
+                minDiff = currDiff;
+                res[0] = arr[low];
+                res[1] = arr[high];
+            }
+            
+            if(sum <= x) {
+                ++low;
+            }
+            else {
+                --high;
+            }
+        }
+        return res;
+    }
+}
