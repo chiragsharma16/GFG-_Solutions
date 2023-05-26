@@ -1,0 +1,15 @@
+//Three Great Candidates
+
+
+
+ Arrays.sort(arr);
+        long pro = 1;
+        long pro2=1;
+        
+        pro = (long) arr[n-1]*arr[n-2]*arr[n-3] ;
+        
+        pro2 = (long) arr[0]*arr[1]*arr[n-1] ;
+        
+        long max = Math.max(pro ,pro2);
+        
+        return max;
