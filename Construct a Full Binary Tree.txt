@@ -1,0 +1,46 @@
+//Construct a Full Binary Tree
+
+
+
+class Num{
+    int a;
+    Num(int a){
+        this.a=a;
+    }
+}
+
+class Solution
+{
+    public Node biuldtreepost(int[] pre,int ps,int pe,HashMap<Integer,Integer> map,int size,Num index){
+        //this is actually act as a pre_Index of preorder
+        if(index.a>=size|| ps>pe){
+            return null;
+        }
+        Node root=new Node(pre[index.a]);
+        ++(index.a);
+        if(ps == pe)
+           return root;
+        int index_root=map.get(pre[index.a]);
+        int numleft=index_root-ps;
+        
+        root.left=biuldtreepost(pre,index_root,pe,map,size,index)  ;
+        root.right=biuldtreepost(pre,ps+1,ps+numleft-1,map,size,index);
+
+        return root;
+    }
+    public Node constructBTree(int pre[], int preM[], int size)
+    {
+        // your code here
+        Num pos=new Num(0);
+        if(pre==null || preM==null || pre.length!=preM.length){
+            return null;
+        }
+        HashMap<Integer,Integer> map=new HashMap<>();
+        
+        for(int i=0;i<preM.length;i++){
+            map.put(preM[i],i);
+        }
+        return biuldtreepost(pre,0,pre.length-1,map,size,pos);
+    }
+    
+}
