@@ -1,0 +1,27 @@
+//Frequency Game
+
+
+
+class Solution {
+    // Function to find largest number with minimum frequency
+    public static int LargButMinFreq(int arr[], int n) {
+        Map<Integer,Integer> map=new HashMap<>();
+         
+         for(int a:arr)
+         {
+             map.put(a,map.getOrDefault(a,0)+1);
+         }
+         int min=Integer.MAX_VALUE;
+         int max=Integer.MIN_VALUE;
+         for(Map.Entry<Integer,Integer> m:map.entrySet())
+         {
+             if(min>=m.getValue()&&max<m.getKey())
+               { 
+                   min=m.getValue();
+                   max=m.getKey();
+                   
+               }
+         }
+         return max;
+    }
+}
