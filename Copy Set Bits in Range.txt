@@ -1,0 +1,23 @@
+//Copy Set Bits in Range
+
+
+class Solution{
+    static int setSetBit(int x, int y, int l, int r){
+        
+        int ans = 0;
+        for(int i=0; i<32; i++){
+            
+            if(i>=l-1 && i<=r-1){
+                int b1 = (1<<i) & y;
+                int b2 = (1<<i) & x;
+                if(b1 != 0 || b2 !=0) ans += (1<<i);
+            }
+            else{
+                if( ((1<<i) & x) !=0)
+                ans += (1<<i);
+            }
+        }
+        return ans;
+    }
+}
+
